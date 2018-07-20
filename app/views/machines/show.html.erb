@@ -4,3 +4,7 @@
   <%= snack.name %>
   <%= snack.price.round(2) %>
 <% end %>
+
+<% unless @machine.average_snack_price.nil? %>
+  <h3>Average Snack Price: $<%= @machine.average_snack_price.round(2) %></h3>
+<% end %>
