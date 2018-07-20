@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe Machine, type: :model do
+  describe 'validations' do
+    it {should belong_to :owner}
+    it {should have_many :machine_snacks}
+    it {should have_many :snacks}
+  end
+
   describe 'Instance Methods' do
     it '#average_snack_price' do
       owner = Owner.create(name: "Sam's Snacks")
