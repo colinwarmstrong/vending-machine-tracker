@@ -5,6 +5,7 @@
   <h3>Locations</h3>
   <% @machines.each do |machine| %>
     <h4><%= machine.location %></h4>
-    <p>Average Price for Vending Machine: $<%= machine.average_snack_price %></p>
+    <p>Average Price for Vending Machine: $<%= machine.average_snack_price.round(2) %></p>
+    <p>Snack Count for <%= machine.location %>: <%= machine.snack_count %></p>
   <% end %>
 </div>

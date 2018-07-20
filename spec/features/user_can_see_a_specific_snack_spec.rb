@@ -45,11 +45,18 @@ describe "User visits 'snacks/:id'" do
     machine_1 = snack.machines.create(location: "Don's Mixed Drinks", owner_id: owner.id )
     machine_2 = snack.machines.create(location: "Turing Basement", owner_id: owner.id)
 
+    machine_1.snacks.create(name: 'Crunch', price: 1.25)
+    machine_1.snacks.create(name: 'Gum', price: 1.05)
+
+    machine_2.snacks.create(name: 'Mentos', price: 1.95)
+    machine_2.snacks.create(name: 'Twizzlers', price: 1.35)
+    machine_2.snacks.create(name: 'Chips', price: 1.55)
+
     visit snack_path(snack)
 
     within '#locations' do
-      expect(page).to have_content("Average Price for Vending Machine: $#{machine_1.average_snack_price}")
-      expect(page).to have_content("Average Price for Vending Machine: $#{machine_2.average_snack_price}")
+      expect(page).to have_content("Snack Count for #{machine_1.location}: 3")
+      expect(page).to have_content("Snack Count for #{machine_2.location}: 4")
     end
   end
 end
