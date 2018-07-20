@@ -4,6 +4,7 @@
 <div id='locations'>
   <h3>Locations</h3>
   <% @machines.each do |machine| %>
-    <%= machine.location %>
+    <h4><%= machine.location %></h4>
+    <p>Average Price for Vending Machine: $<%= machine.average_snack_price %></p>
   <% end %>
 </div>
